@@ -29,9 +29,9 @@ public class MenuBusinesslogic {
 	public String getMenuData(Model model) {
 		
 		// メニュー画面情報取得
-		dataAccess.getMenuData(model);
+		var ret = dataAccess.getMenuData(model);
 
-		return "menu";
+		return ret;
 	}
 	//endregion;
 

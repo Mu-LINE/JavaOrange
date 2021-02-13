@@ -22,7 +22,7 @@ public class MenuDataAccess {
 
 		// DB取得処理
 		
-		return "menu";
+		return "Menu";
 	}
 	//endregion;
 }
