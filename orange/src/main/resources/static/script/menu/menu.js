@@ -45,16 +45,6 @@ var Menu;
 		
 			$('#button').on('click', function() {
 				
-				var model = {
-					No: "111",
-					Name: "Test",
-				};				
-				
-			    console.log(JSON.stringify(model));
-				
-				common.postAjax(
-					"getData",
-					model);
 			});			
 	    },
 	
@@ -63,7 +53,33 @@ var Menu;
 	     */
 	    Initialization: function () {
 		
+			// メニュー情報を取得する
+			Menu.GetMenuData();
 	    },
+
+	    /**
+	     * メニュー情報を取得する
+	     */
+		GetMenuData: function(){
+
+			var model = {
+				No: "111",
+				Name: "Test",
+			};
+				
+		    console.log(JSON.stringify(model));
+			
+			common.postAjax("getData", model, Menu.SetMenuData);
+		},
+		
+	    /**
+	     * メニュー情報を画面に設定する
+	     */
+		SetMenuData: function(data, textStatus, jqXHR){
+			
+			alert("SetMenuData");
+			console.log(data);
+		}
     };
 
 })();

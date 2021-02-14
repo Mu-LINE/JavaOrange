@@ -10,7 +10,13 @@ common = {
 		
 	},
 
-	postAjax: function(uri, param) {
+	postAjax: function(uri, param, onSuccessedCollBackFunc = null, onFailedCollBack = null) {
+
+		// TODO:チェック内容は要検討
+		if(!(typeof(onSuccessedCollBackFunc) == "function")){
+			console.log("");
+			return;
+		}
 		
 		$.ajax({
 			url: uri,
@@ -23,12 +29,15 @@ common = {
 			console.log(data);
 			console.log(textStatus);
 			console.log(jqXHR);
+			onSuccessedCollBackFunc(data, textStatus, jqXHR);
 		})
 		.fail(function (jqXHR, textStatus, errorThrown) {
 			console.log(jqXHR);
 			console.log(textStatus);
 			console.log(errorThrown);
+			onFailedCollBack(data, textStatus, jqXHR);
 		})
+		// TODO:仕様検討
 		.always(function () {	
 		});		
 	},
